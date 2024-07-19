@@ -1,4 +1,5 @@
 import { DataAcess } from '../database/dataAccess'
+import { pgToProfit } from '../mappers/reportProfitMapper'
 
 export interface Profit {
   mes: number
@@ -13,7 +14,7 @@ export class ReportProfitRepository {
   }
 
   async getDataByPeriod (): Promise<Profit[]> {
-    const result: Profit[] = await this.dbAcess.executeProcedure({})
-    return result
+    const result = await this.dbAcess.executeProcedure({})
+    return pgToProfit(result)
   }
 }
