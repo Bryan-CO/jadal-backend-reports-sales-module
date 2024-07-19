@@ -1,13 +1,17 @@
 import { Request, Response } from 'express'
-import { Pool, QueryResult } from 'pg'
+import { DataAcess } from '../database/dataAccess'
+import { DatabaseConnection } from '../database/dataConnection'
+import { ReportProfitService } from '../services/reportProfitService'
+import { ReportProfitRepository } from '../repository/reportProfitRepository'
+
+const dbConnection = new DatabaseConnection()
+const dbAccess = new DataAcess(dbConnection)
+const reportProfitRepository = new ReportProfitRepository(dbAccess)
 
 // eslint-disable-next-line
 export class ReportProfitController {
   static async getAll (req: Request, res: Response): Promise<void> {
-    const client = await new Pool({
-      connectionString: 'postgres://postgres:admin@localhost:5432/postgres'
-    }).connect()
-    const [rs]: QueryResult[] = (await client.query('SELECT 123;')).rows
-    res.send(rs)
+    const result = await new ReportProfitService(reportProfitRepository).getAllData()
+    res.send(result)
   }
 }
