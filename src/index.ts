@@ -2,8 +2,7 @@ import express from 'express'
 import routes from './routes'
 // Variables y/o constantes
 const app = express()
-const PORT = process.env.PORT ?? 1234
-
+const PORT = process.env.SERVER_PORT ?? 6969
 // Middlewares
 app.use(express.json())
 
