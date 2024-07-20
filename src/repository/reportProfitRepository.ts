@@ -14,7 +14,7 @@ export class ReportProfitRepository {
   }
 
   async getDataByPeriod (): Promise<Profit[]> {
-    const result = await this.dbAcess.executeProcedure({})
+    const result = await this.dbAcess.executeProcedure({ nameProcedure: 'obtener_utilidades', parameters: [1, 4] })
     return pgToProfit(result)
   }
 }

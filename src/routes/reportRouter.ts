@@ -1,8 +1,8 @@
 import { Router } from 'express'
 import { reportProfileRoute } from './reportProfitRoute'
-import { reportSalesRoute } from './reportSalesRoute'
+import { reportBalanceRoute } from './reportBalanceRoute'
 import { reportProjectionsRoute } from './reportProjectionsRoute'
 export const reportRoute = Router()
 reportRoute.use('/profit', reportProfileRoute)
-reportRoute.use('/sales', reportSalesRoute)
+reportRoute.use('/balance', reportBalanceRoute)
 reportRoute.use('/projections', reportProjectionsRoute)

@@ -1,4 +1,4 @@
-import { Request, Response } from 'express'
+import { NextFunction, Request, Response } from 'express'
 import { DataAcess } from '../database/dataAccess'
 import { DatabaseConnection } from '../database/dataConnection'
 import { ReportProfitService } from '../services/reportProfitService'
@@ -10,8 +10,14 @@ const reportProfitRepository = new ReportProfitRepository(dbAccess)
 
 // eslint-disable-next-line
 export class ReportProfitController {
-  static async getAll (req: Request, res: Response): Promise<void> {
-    const result = await new ReportProfitService(reportProfitRepository).getAllData()
-    res.send(result)
+  static async getAll (req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      const result = await new ReportProfitService(reportProfitRepository).getAllData()
+      res.send(result)
+    } catch (error) {
+      next(error
+
+      )
+    }
   }
 }

@@ -1,17 +1,17 @@
 import { NextFunction, Request, Response } from 'express'
 import { DatabaseConnection } from '../database/dataConnection'
 import { DataAcess } from '../database/dataAccess'
-import { ReportProjectionsRepository } from '../repository/reportProjectionsRepository'
-import { ReportProjectionsService } from '../services/reportProjectionsService'
+import { ReportBalanceRepository } from '../repository/reportBalanceRepository'
+import { ReportBalanceService } from '../services/reportBalanceService'
 
 const dbConnection = new DatabaseConnection()
 const dbAccess = new DataAcess(dbConnection)
-const reportProjectsRepository = new ReportProjectionsRepository(dbAccess)
+const reportBalanceRepository = new ReportBalanceRepository(dbAccess)
 // eslint-disable-next-line
-export class ReportProjectionController {
+export class ReportSalesController {
   static async getAll (req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const result = await new ReportProjectionsService(reportProjectsRepository).getAllData()
+      const result = await new ReportBalanceService(reportBalanceRepository).getAllData()
       res.send(result)
     } catch (error) {
       next(error
