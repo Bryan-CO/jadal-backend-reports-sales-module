@@ -1,5 +1,6 @@
-import express, { NextFunction, Request, Response } from 'express'
+import express from 'express'
 import routes from './routes'
+import { errorHandler } from './middlewares/errorHandler'
 
 // Variables y/o constantes
 const app = express()
@@ -10,10 +11,7 @@ app.use(express.json())
 // Rutas
 app.use('/api', routes)
 
-app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
-  console.log(error)
-  res.status(500).json(':(')
-})
+app.use(errorHandler)
 
 // Servidor
 app.listen(PORT, () => console.log(`App escuchando en http://localhost:${PORT}/api`))

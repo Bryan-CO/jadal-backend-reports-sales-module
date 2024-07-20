@@ -14,7 +14,7 @@ export class ReportProjectionsRepository {
   }
 
   async getDataByPeriod (): Promise<Projection[]> {
-    const result = await this.dbAcess.executeProcedure({ nameProcedure: 'obtener_promedios' })
+    const result = await this.dbAcess.executeProcedure({ nameProcedure: 'obtener_promaedios' })
     return pgToProject(result)
   }
 }

@@ -10,13 +10,7 @@ const reportProjectsRepository = new ReportProjectionsRepository(dbAccess)
 // eslint-disable-next-line
 export class ReportProjectionController {
   static async getAll (req: Request, res: Response, next: NextFunction): Promise<void> {
-    try {
-      const result = await new ReportProjectionsService(reportProjectsRepository).getAllData()
-      res.send(result)
-    } catch (error) {
-      next(error
-
-      )
-    }
+    const result = await new ReportProjectionsService(reportProjectsRepository).getAllData()
+    res.send(result)
   }
 }

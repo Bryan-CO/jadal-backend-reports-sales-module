@@ -11,13 +11,7 @@ const reportProfitRepository = new ReportProfitRepository(dbAccess)
 // eslint-disable-next-line
 export class ReportProfitController {
   static async getAll (req: Request, res: Response, next: NextFunction): Promise<void> {
-    try {
-      const result = await new ReportProfitService(reportProfitRepository).getAllData()
-      res.send(result)
-    } catch (error) {
-      next(error
-
-      )
-    }
+    const result = await new ReportProfitService(reportProfitRepository).getAllData()
+    res.send(result)
   }
 }
