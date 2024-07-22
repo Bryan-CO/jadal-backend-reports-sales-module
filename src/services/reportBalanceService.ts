@@ -1,4 +1,4 @@
-import { Balance, ReportBalanceRepository } from '../repository/reportBalanceRepository'
+import { BalanceReport, ReportBalanceRepository } from '../repository/reportBalanceRepository'
 
 export class ReportBalanceService {
   reportBalanceService: ReportBalanceRepository
@@ -6,7 +6,7 @@ export class ReportBalanceService {
     this.reportBalanceService = reportBalanceService
   }
 
-  async getAllData (fechaInicio: string, fechaFin: string): Promise<Balance[]> {
+  async getAllData (fechaInicio: string, fechaFin: string): Promise<BalanceReport> {
     return await this.reportBalanceService.getDataByPeriod(fechaInicio, fechaFin)
   }
 }

@@ -1,12 +1,12 @@
-import { Profit, ReportProfitRepository } from '../repository/reportProfitRepository'
+import { ProfitReport, ReportProfitRepository } from '../repository/reportProfitRepository'
 
 export class ReportProfitService {
-  reportProfitService: ReportProfitRepository
+  reportProfitRepository: ReportProfitRepository
   constructor (reportProfitService: ReportProfitRepository) {
-    this.reportProfitService = reportProfitService
+    this.reportProfitRepository = reportProfitService
   }
 
-  async getAllDataByPeriod (fechaInicio: string, fechaFin: string): Promise<Profit[]> {
-    return await this.reportProfitService.getDataByPeriod(fechaInicio, fechaFin)
+  async getAllDataByPeriod (fechaInicio: string, fechaFin: string): Promise<ProfitReport> {
+    return await this.reportProfitRepository.getAllDataByPeriod(fechaInicio, fechaFin)
   }
 }

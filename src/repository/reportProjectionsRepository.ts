@@ -3,6 +3,7 @@ import { pgToProject } from '../mappers/reportProjectionsMapper'
 
 export interface Projection {
   mes: number
+  año: number
   promedio: number
   incremento: number
 }
@@ -14,7 +15,7 @@ export class ReportProjectionsRepository {
   }
 
   async getDataByPeriod (fechaInicio: string, fechaFin: string): Promise<Projection[]> {
-    const result = await this.dbAcess.executeProcedure({ nameProcedure: 'obtener_promedios', parameters: [fechaInicio, fechaFin] })
+    const result = await this.dbAcess.executeProcedure({ nameProcedure: 'obtener_proyeccion', parameters: [fechaInicio, fechaFin] })
     return pgToProject(result)
   }
 }

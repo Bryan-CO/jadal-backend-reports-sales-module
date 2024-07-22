@@ -5,6 +5,7 @@ export function pgToProject (reportProjections: any[]): Projection[] {
   reportProjections.forEach((oldReport) => {
     const report: Projection = {
       mes: oldReport.mes,
+      año: oldReport.anio,
       promedio: oldReport.promedio,
       incremento: oldReport.incremento
     }

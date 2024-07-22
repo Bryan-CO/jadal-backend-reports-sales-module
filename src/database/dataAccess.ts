@@ -27,7 +27,6 @@ export class DataAcess {
     }
 
     const query = `${typeQuery} ${nameProcedure}${params};`
-
     const result = (await this.dbConnection.con.query(query, parameters)).rows
     return result
   }
