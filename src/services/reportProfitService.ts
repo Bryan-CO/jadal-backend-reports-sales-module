@@ -6,7 +6,7 @@ export class ReportProfitService {
     this.reportProfitService = reportProfitService
   }
 
-  async getAllData (): Promise<Profit[]> {
-    return await this.reportProfitService.getDataByPeriod()
+  async getAllDataByPeriod (fechaInicio: string, fechaFin: string): Promise<Profit[]> {
+    return await this.reportProfitService.getDataByPeriod(fechaInicio, fechaFin)
   }
 }
