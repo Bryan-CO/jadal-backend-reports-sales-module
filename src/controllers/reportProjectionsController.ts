@@ -3,6 +3,7 @@ import { DatabaseConnection } from '../database/dataConnection'
 import { DataAcess } from '../database/dataAccess'
 import { ReportProjectionsRepository } from '../repository/reportProjectionsRepository'
 import { ReportProjectionsService } from '../services/reportProjectionsService'
+import { ResponseModel } from '../utils/ReponseModel'
 
 const dbConnection = new DatabaseConnection()
 const dbAccess = new DataAcess(dbConnection)
@@ -11,6 +12,6 @@ const reportProjectsRepository = new ReportProjectionsRepository(dbAccess)
 export class ReportProjectionController {
   static async getAll (req: Request, res: Response, next: NextFunction): Promise<void> {
     const result = await new ReportProjectionsService(reportProjectsRepository).getAllData()
-    res.send(result)
+    ResponseModel.success({ res, data: result })
   }
 }
