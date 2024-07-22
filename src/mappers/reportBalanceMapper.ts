@@ -6,7 +6,7 @@ export function pgToBalance (reportProfits: any[]): Balance[] {
     const report: Balance = {
       mes: oldReport.mes,
       ventas: oldReport.ventas,
-      gastosCompras: oldReport.gastos_compras
+      comprasGastos: oldReport.comprasgastos
     }
     reportsMapped.push(report)
   })

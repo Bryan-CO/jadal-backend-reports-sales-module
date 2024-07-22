@@ -4,7 +4,7 @@ import { pgToBalance } from '../mappers/reportBalanceMapper'
 export interface Balance {
   mes: number
   ventas: number
-  gastosCompras: number
+  comprasGastos: number
 }
 
 export class ReportBalanceRepository {
@@ -13,8 +13,8 @@ export class ReportBalanceRepository {
     this.dbAcess = dbAccess
   }
 
-  async getDataByPeriod (): Promise<Balance[]> {
-    const result = await this.dbAcess.executeProcedure({ nameProcedure: 'obtener_balance' })
+  async getDataByPeriod (fechaInicio: string, fechaFin: string): Promise<Balance[]> {
+    const result = await this.dbAcess.executeProcedure({ nameProcedure: 'obtener_balance', parameters: [fechaInicio, fechaFin] })
     return pgToBalance(result)
   }
 }

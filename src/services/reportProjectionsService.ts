@@ -6,7 +6,7 @@ export class ReportProjectionsService {
     this.reportProjectionsService = reportProjectionsService
   }
 
-  async getAllData (): Promise<Projection[]> {
-    return await this.reportProjectionsService.getDataByPeriod()
+  async getAllData (fechaInicio: string, fechaFin: string): Promise<Projection[]> {
+    return await this.reportProjectionsService.getDataByPeriod(fechaInicio, fechaFin)
   }
 }

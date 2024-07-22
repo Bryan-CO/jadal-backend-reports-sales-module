@@ -11,7 +11,8 @@ const reportProjectsRepository = new ReportProjectionsRepository(dbAccess)
 // eslint-disable-next-line
 export class ReportProjectionController {
   static async getAll (req: Request, res: Response, next: NextFunction): Promise<void> {
-    const result = await new ReportProjectionsService(reportProjectsRepository).getAllData()
+    const { fechaInicio, fechaFin } = req.query
+    const result = await new ReportProjectionsService(reportProjectsRepository).getAllData(fechaInicio as string, fechaFin as string)
     ResponseModel.success({ res, data: result })
   }
 }
