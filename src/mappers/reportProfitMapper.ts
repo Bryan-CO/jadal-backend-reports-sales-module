@@ -1,4 +1,4 @@
-import { Profit } from '../repository/reportProfitRepository'
+import { MetricProfit, Profit } from '../repository/reportProfitRepository'
 
 export function pgToProfit (reportProfits: any[]): Profit[] {
   const reports: Profit[] = reportProfits.map(data => ({
@@ -9,4 +9,13 @@ export function pgToProfit (reportProfits: any[]): Profit[] {
     variacion: Number(data.variacion)
   }))
   return reports
+}
+
+export function pgToMetricProfit ([metricProfit]: any): MetricProfit {
+  return {
+    totalUtilidadBruta: metricProfit.totalutilidadbruta,
+    totalUtilidadNeta: metricProfit.totalutilidadneta,
+    promedioUtilidadBruta: metricProfit.promedioutilidadbruta,
+    promedioUtilidadNeta: metricProfit.promedioutilidadneta
+  }
 }

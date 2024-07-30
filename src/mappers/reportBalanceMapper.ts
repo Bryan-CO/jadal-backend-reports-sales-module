@@ -1,4 +1,4 @@
-import { Balance } from '../repository/reportBalanceRepository'
+import { Balance, MetricBalance } from '../repository/reportBalanceRepository'
 
 export function pgToBalance (reportBalances: any[]): Balance[] {
   const balances: Balance[] = reportBalances.map(data => ({
@@ -8,4 +8,13 @@ export function pgToBalance (reportBalances: any[]): Balance[] {
     comprasGastos: parseFloat(data.comprasgastos)
   }))
   return balances
+}
+
+export function pgToMetricBalance ([metricBalance]: any): MetricBalance {
+  return {
+    totalCompras: metricBalance.totalcompras,
+    totalVentas: metricBalance.totalventas,
+    deficitTotal: metricBalance.deficittotal,
+    estadoDeficit: metricBalance.estadodeficit
+  }
 }
