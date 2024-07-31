@@ -13,9 +13,9 @@ export function pgToProfit (reportProfits: any[]): Profit[] {
 
 export function pgToMetricProfit ([metricProfit]: any): MetricProfit {
   return {
-    totalUtilidadBruta: metricProfit.totalutilidadbruta,
-    totalUtilidadNeta: metricProfit.totalutilidadneta,
-    promedioUtilidadBruta: metricProfit.promedioutilidadbruta,
-    promedioUtilidadNeta: metricProfit.promedioutilidadneta
+    totalUtilidadBruta: metricProfit.totalutilidadbruta ?? 0,
+    totalUtilidadNeta: metricProfit.totalutilidadneta ?? 0,
+    promedioUtilidadBruta: metricProfit.promedioutilidadbruta ?? 0,
+    promedioUtilidadNeta: metricProfit.promedioutilidadneta ?? 0
   }
 }

@@ -12,9 +12,9 @@ export function pgToBalance (reportBalances: any[]): Balance[] {
 
 export function pgToMetricBalance ([metricBalance]: any): MetricBalance {
   return {
-    totalCompras: metricBalance.totalcompras,
-    totalVentas: metricBalance.totalventas,
-    deficitTotal: metricBalance.deficittotal,
-    estadoDeficit: metricBalance.estadodeficit
+    totalCompras: metricBalance.totalcompras ?? 0,
+    totalVentas: metricBalance.totalventas ?? 0,
+    deficitTotal: metricBalance.deficittotal ?? 0,
+    estadoDeficit: metricBalance.estadodeficit ?? 0
   }
 }
