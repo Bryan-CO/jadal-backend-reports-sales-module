@@ -19,5 +19,5 @@ export function subtractOneYear (dateString: string): string {
 export function calcularPorcentajeCambio (actual: number, anterior: number): number {
   if (actual && !anterior) return 100
   if (!actual && !anterior) return 0
-  return parseFloat(((actual - anterior) / anterior * 100).toFixed(1))
+  return parseFloat(((actual - anterior) / Math.abs(anterior) * 100).toFixed(1))
 }
