@@ -8,6 +8,7 @@ export interface Projection {
   incremento: number
   pronostico: number
   ponderado: number
+  valorReal: number
 }
 
 export class ReportProjectionsRepository {
@@ -18,6 +19,7 @@ export class ReportProjectionsRepository {
 
   async getDataByPeriod (fechaInicio: string, fechaFin: string): Promise<Projection[]> {
     const result = await this.dbAcess.executeProcedure({ nameProcedure: 'obtener_proyecciones', parameters: [fechaInicio, fechaFin] })
+    console.log(pgToProject(result))
     return pgToProject(result)
   }
 }

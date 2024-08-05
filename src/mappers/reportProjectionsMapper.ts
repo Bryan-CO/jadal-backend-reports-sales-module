@@ -6,10 +6,11 @@ export function pgToProject (reportProjections: any[]): Projection[] {
     const report: Projection = {
       mes: oldReport.mes,
       año: oldReport.anio,
-      promedio: oldReport.promedio,
-      incremento: oldReport.incremento,
-      pronostico: oldReport.pronostico,
-      ponderado: oldReport.ponderado
+      promedio: parseFloat(oldReport.promedio),
+      incremento: parseFloat(oldReport.incremento),
+      pronostico: parseFloat(oldReport.pronostico),
+      ponderado: parseFloat(oldReport.ponderado),
+      valorReal: parseFloat(oldReport.valorreal)
     }
     reportsMapped.push(report)
   })
