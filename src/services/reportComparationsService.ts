@@ -1,4 +1,3 @@
-import { BalanceReport, ReportBalanceRepository } from '../repository/reportBalanceRepository'
 import { Comparation, ReportComparationsRepository } from '../repository/reportComparationsRepository'
 
 export class ReportComparationsService {
