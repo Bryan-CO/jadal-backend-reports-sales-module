@@ -8,11 +8,12 @@ import { ResponseModel } from '../utils/ReponseModel'
 const dbConnection = new DatabaseConnection()
 const dbAccess = new DataAcess(dbConnection)
 const reportProjectsRepository = new ReportProjectionsRepository(dbAccess)
+const reportProjectsService = new ReportProjectionsService(reportProjectsRepository)
 // eslint-disable-next-line
 export class ReportProjectionController {
   static async getAll (req: Request, res: Response, next: NextFunction): Promise<void> {
     const { fechaInicio, fechaFin } = req.query
-    const result = await new ReportProjectionsService(reportProjectsRepository).getAllData(fechaInicio as string, fechaFin as string)
+    const result = await reportProjectsService.getAllData(fechaInicio as string, fechaFin as string)
     ResponseModel.success({ res, data: result })
   }
 }
