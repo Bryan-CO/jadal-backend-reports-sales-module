@@ -2,7 +2,14 @@ import { DatabaseConnection } from './dataConnection'
 
 export class DataAcess {
   private readonly dbConnection: DatabaseConnection
+  private static instance: DataAcess
   constructor (dbConnection: DatabaseConnection) {
+    // eslint-disable-next-line
+    if (DataAcess.instance) {
+      this.dbConnection = dbConnection
+      return DataAcess.instance
+    }
+    DataAcess.instance = this
     this.dbConnection = dbConnection
   }
 
