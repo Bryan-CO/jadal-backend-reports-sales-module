@@ -14,7 +14,8 @@
     "@types/express": "^4.17.21",
     "ts-standard": "^12.0.2",
     "tsc-watch": "^6.2.0",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.3",
+    "winston": "^3.13.1"
   },
   "dependencies": {
     "@types/cors": "^2.8.17",
