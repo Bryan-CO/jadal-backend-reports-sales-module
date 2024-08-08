@@ -7,6 +7,7 @@ export interface Balance {
   año: number
   ventas: number
   comprasGastos: number
+  utilidad: number
 }
 
 export type DeficitStatus = 'A FAVOR' | 'EN CONTRA' | 'EQUIVALENTE'
@@ -33,10 +34,11 @@ export class ReportBalanceRepository {
   }
 
   async getDataByPeriod (fechaInicio: string, fechaFin: string): Promise<BalanceReport> {
-    const data = pgToBalance(await this.dbAcess.executeProcedure({ nameProcedure: 'obtener_balance', parameters: [fechaInicio, fechaFin] }))
+    const data = pgToBalance(await this.dbAcess.executeProcedure({ nameProcedure: 'obtener_balance_general', parameters: [fechaInicio, fechaFin] }))
     const newFechaInicio = subtractOneYear(fechaInicio)
     const newFechaFin = subtractOneYear(fechaFin)
-    const oldMetrics = pgToMetricBalance(await this.dbAcess.executeProcedure({ nameProcedure: 'obtener_metricas_balance', parameters: [newFechaInicio, newFechaFin] }))
+
+    const oldMetrics = pgToMetricBalance(await this.dbAcess.executeProcedure({ nameProcedure: 'obtener_metricas_balance_general', parameters: [newFechaInicio, newFechaFin] }))
     const metrics = obtenerMetricas(data, oldMetrics)
     const result: BalanceReport = { metrics, balances: data }
     return (result)
@@ -57,7 +59,7 @@ function obtenerMetricas (balances: Balance[], oldMetrics: MetricBalance): Metri
     : totalVentas < totalCompras
       ? 'EN CONTRA'
       : 'EQUIVALENTE'
-
+  console.log(oldMetrics.totalVentas)
   const porcentajeTotalVentas = calcularPorcentajeCambio(totalVentas, oldMetrics.totalVentas)
   const porcentajeTotalCompras = calcularPorcentajeCambio(totalCompras, oldMetrics.totalCompras)
   return {

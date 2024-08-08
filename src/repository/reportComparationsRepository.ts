@@ -7,7 +7,6 @@ export interface Comparation {
   gastos: number
 }
 
-
 export class ReportComparationsRepository {
   private readonly dbAcess
   constructor (dbAccess: DataAcess) {

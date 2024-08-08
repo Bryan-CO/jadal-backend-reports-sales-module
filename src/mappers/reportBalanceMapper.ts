@@ -5,7 +5,8 @@ export function pgToBalance (reportBalances: any[]): Balance[] {
     año: Number(data.anio),
     mes: Number(data.mes),
     ventas: parseFloat(data.ventas),
-    comprasGastos: parseFloat(data.comprasgastos)
+    comprasGastos: parseFloat(data.comprasgastos),
+    utilidad: parseFloat(data.utilidad)
   }))
   return balances
 }

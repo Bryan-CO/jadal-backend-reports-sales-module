@@ -8,7 +8,6 @@ export function pgToProject (reportProjections: any[]): Projection[] {
       año: oldReport.anio,
       promedio: parseFloat(oldReport.promedio),
       incremento: parseFloat(oldReport.incremento),
-      pronostico: parseFloat(oldReport.pronostico),
       ponderado: parseFloat(oldReport.ponderado),
       valorReal: parseFloat(oldReport.valorreal)
     }

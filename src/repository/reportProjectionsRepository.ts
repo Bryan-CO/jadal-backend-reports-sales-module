@@ -6,7 +6,6 @@ export interface Projection {
   año: number
   promedio: number
   incremento: number
-  pronostico: number
   ponderado: number
   valorReal: number
 }
