@@ -14,7 +14,7 @@ export class ReportComparationsRepository {
   }
 
   async getDataByPeriod (fechaInicio: string, fechaFin: string): Promise<Comparation> {
-    const data = pgToComparation(await this.dbAcess.executeProcedure({ nameProcedure: 'obtener_comparaciones', parameters: [fechaInicio, fechaFin] }))
+    const data = pgToComparation(await this.dbAcess.executeProcedure({ nameProcedure: 'obtener_comparaciones_ventas_compras_gastos', parameters: [fechaInicio, fechaFin] }))
     return (data)
   }
 }

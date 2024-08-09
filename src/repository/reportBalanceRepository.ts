@@ -59,7 +59,6 @@ function obtenerMetricas (balances: Balance[], oldMetrics: MetricBalance): Metri
     : totalVentas < totalCompras
       ? 'EN CONTRA'
       : 'EQUIVALENTE'
-  console.log(oldMetrics.totalVentas)
   const porcentajeTotalVentas = calcularPorcentajeCambio(totalVentas, oldMetrics.totalVentas)
   const porcentajeTotalCompras = calcularPorcentajeCambio(totalCompras, oldMetrics.totalCompras)
   return {
