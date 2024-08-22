@@ -9,7 +9,7 @@ export class DatabaseConnection {
       host: process.env.DB_HOST,
       database: process.env.DB_DATABASE,
       ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
-      connectionTimeoutMillis: 5000
+      connectionTimeoutMillis: 20000
     })
   }
 
